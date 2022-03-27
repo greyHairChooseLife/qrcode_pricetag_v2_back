@@ -1,11 +1,30 @@
 import express from 'express'
+import env from 'dotenv';
+env.config();
+import cors from 'cors';
+
+import supplierRouter from './routers/supplierRouter';
+import productRouter from './routers/productRouter';
+import customerRouter from './routers/customerRouter';
+import clerkRouter from './routers/clerkRouter';
 
 const app = express();
 
-app.get('/', (req, res, next) => {
-	res.send('Hello, world');
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.set('view engine', 'ejs');
+app.use(express.static('./front'));
+app.use(cors());
 
-app.listen(3002, () => {
-	console.log('Server running in 3002');
+//app.get('/', (req, res, next) => {
+//	res.send('Hello, world');
+//})
+
+app.use('/supplier', supplierRouter);
+app.use('/product', productRouter);
+//app.use('/customer', customerRouter);
+//app.use('/clerk', clerkRouter);
+
+app.listen(process.env.PORT, () => {
+	console.log(`Server running at ${process.env.PORT}`);
 })
