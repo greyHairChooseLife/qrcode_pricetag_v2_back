@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import supplierRouter from './routers/supplierRouter';
 import productRouter from './routers/productRouter';
+import priceRouter from './routers/priceRouter';
 import customerRouter from './routers/customerRouter';
 import clerkRouter from './routers/clerkRouter';
 
@@ -22,8 +23,9 @@ app.use(cors());
 
 app.use('/supplier', supplierRouter);
 app.use('/product', productRouter);
-//app.use('/customer', customerRouter);
-//app.use('/clerk', clerkRouter);
+app.use('/price', priceRouter);
+app.use('/customerCart', customerRouter);
+app.use('/clerk', clerkRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log(`Server running at ${process.env.PORT}`);
