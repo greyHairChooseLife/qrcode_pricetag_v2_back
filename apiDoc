@@ -1,0 +1,30 @@
+/supplier
+	/get, 				getSuppliers					CSR
+	/post, 				postSupplier					CSR
+	/put,				putSupplier						CSR
+	/delete,	 		deleteSupplier					CSR
+
+/product
+	/get/:id, 			getProductsBySupplierId			CSR
+	/post, 				postProductsBySupplierId		CSR
+	/put, 				putProductsBySupplierId			CSR
+	/delete, 			deleteProductsBySupplierId		CSR
+
+/price
+	/get/:barcode, 		getProductByBarcode				SSR
+
+/customerCart
+	/get/:mobile, 		getCartByMobile					SSR
+	/post, 				postCart						-
+	/put, 				putCart							-
+	/delete, 			deleteCart						-
+
+/byClerk
+	/get, 				getCustomers					SSR
+	/get/:mobile, 		getCustomerByMobile				SSR
+
+
+
+
+
+

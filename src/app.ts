@@ -17,15 +17,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('./front'));
 app.use(cors());
 
-//app.get('/', (req, res, next) => {
-//	res.send('Hello, world');
-//})
-
 app.use('/supplier', supplierRouter);
 app.use('/product', productRouter);
 app.use('/price', priceRouter);
 app.use('/customerCart', customerRouter);
-app.use('/clerk', clerkRouter);
+app.use('/byClerk', clerkRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log(`Server running at ${process.env.PORT}`);

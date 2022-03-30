@@ -2,9 +2,9 @@ import { Request, Response } from 'express'
 import productModel from '../models/productModel';
 
 const getProductsBySupplierId = async (req: Request, res: Response) => {
-	const {id} = req.params;
+	const {supplier_id} = req.params;
 
-	const result = await productModel.getProductsBySupplierId(id);
+	const result = await productModel.getProductsBySupplierId(supplier_id);
 	
 	return res.json(result);
 }
