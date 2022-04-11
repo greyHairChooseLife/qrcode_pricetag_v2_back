@@ -27,14 +27,12 @@ interface postProductsBySupplierId {
 	barcode: string,
 }
 
-const postProductsBySupplierId = async (form: postProductsBySupplierId) => {
-	const { product_code, name, size = '', registered_date, purchased_cost, supplier_id, barcode } = form;
+const postProductsBySupplierId = (form: postProductsBySupplierId[]) => {
+	for(let i=0; i<form.length; i++){
+		const { product_code='', name, size = '', purchased_cost, supplier_id, barcode } = form[i];
 
-	// it doesn't work below
-	//const value = Object.values(form);
-	//db.query(`INSERT INTO product (product_code, name, size, registered_date, purchased_cost, supplier_id, barcode) VALUES(?, ?, ?, ?, ?, ?, ?)`, value);
-
-	db.query(`INSERT INTO product (product_code, name, size, registered_date, purchased_cost, supplier_id, barcode) VALUES(?, ?, ?, ?, ?, ?, ?)`, [product_code, name, size, registered_date, purchased_cost, supplier_id, barcode]);
+		db.query(`INSERT INTO product (product_code, name, size, registered_date, purchased_cost, supplier_id, barcode) VALUES(?, ?, ?, now(), ?, ?, ?)`, [product_code, name, size, purchased_cost, supplier_id, barcode]);
+	}
 
 	return
 }
@@ -43,16 +41,16 @@ interface updateProductsBySupplierId {
 	product_code: string,
 	name: string,
 	size?: string,
-	registered_date: Date,
 	purchased_cost: number,
-	supplier_id: number,
 	barcode: string,
 }
 
-const putProductsBySupplierId = async (form: updateProductsBySupplierId) => {
-	const { product_code, name, size ='', registered_date, purchased_cost, supplier_id, barcode } = form;
+const putProductsBySupplierId = (form: updateProductsBySupplierId[]) => {
+	for(let i=0; i<form.length; i++){
+		const { product_code='', name, size ='', purchased_cost, barcode } = form[i];
 
-	db.query(`UPDATE product SET product_code='${product_code}', name='${name}', size='${size}', registered_date='${registered_date}', purchased_cost=${purchased_cost}, barcode='${barcode}' WHERE barcode=?`, [barcode]);
+		db.query(`UPDATE product SET product_code='${product_code}', name='${name}', size='${size}', registered_date=now(), purchased_cost=${purchased_cost} WHERE barcode=?`, [barcode]);
+	}
 
 	return
 }

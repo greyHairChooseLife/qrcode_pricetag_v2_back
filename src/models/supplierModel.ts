@@ -17,12 +17,13 @@ interface postSupplier {
 	address: string,
 	contact: string,
 	note?: string,
+	margin_ratio?: number,
 }
 
 const postSupplier = async (form: postSupplier) => {
-	const { name, address, contact, note = '' } = form;
+	const { name, address, contact, note = '', margin_ratio = 0 } = form;
 
-	db.query(`INSERT INTO supplier (name, address, contact, note) VALUES(?, ?, ?, ?)`, [name, address, contact, note]);
+	db.query(`INSERT INTO supplier (name, address, contact, note, margin_ratio) VALUES(?, ?, ?, ?, ?)`, [name, address, contact, note, margin_ratio]);
 
 	return
 }
@@ -33,12 +34,13 @@ interface updateSupplier {
 	address: string,
 	contact: string,
 	note?: string,
+	margin_ratio?: number,
 }
 
 const putSupplier = async (form: updateSupplier) => {
-	const { id, name, address, contact, note = '' } = form;
+	const { id, name, address, contact, note = '', margin_ratio } = form;
 
-	db.query(`UPDATE supplier SET name='${name}', address='${address}', contact='${contact}', note='${note}' WHERE id=${id}`);
+	db.query(`UPDATE supplier SET name='${name}', address='${address}', contact='${contact}', note='${note}', margin_ratio='${margin_ratio}' WHERE id=${id}`);
 
 	return
 }

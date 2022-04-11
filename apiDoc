@@ -1,14 +1,14 @@
 /supplier
 	/get, 				getSuppliers					CSR
-	/post, 				postSupplier					CSR
-	/put,				putSupplier						CSR
-	/delete,	 		deleteSupplier					CSR
+	/post, 				postSupplier					-
+	/put,				putSupplier						-
+	/delete,	 		deleteSupplier					-
 
 /product
 	/get/:id, 			getProductsBySupplierId			CSR
-	/post, 				postProductsBySupplierId		CSR
-	/put, 				putProductsBySupplierId			CSR
-	/delete, 			deleteProductsBySupplierId		CSR
+	/post, 				postProductsBySupplierId		-
+	/put, 				putProductsBySupplierId			-
+	/delete, 			deleteProductsBySupplierId		-
 
 /price
 	/get/:barcode, 		getProductByBarcode				SSR

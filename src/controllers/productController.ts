@@ -15,10 +15,8 @@ const postProductsBySupplierId = async (req: Request, res: Response) => {
 	return res.json(result);
 }
 
-const putProductsBySupplierId = async (req: Request, res: Response) => {
-	const { id } = req.body;
-
-	const result = await productModel.putProductsBySupplierId(id);
+const putProductsBySupplierId = (req: Request, res: Response) => {
+	const result = productModel.putProductsBySupplierId(req.body);
 	
 	return res.json(result);
 }
