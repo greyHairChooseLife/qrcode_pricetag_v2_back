@@ -9,8 +9,8 @@ const getProductsBySupplierId = async (req: Request, res: Response) => {
 	return res.json(result);
 }
 
-const postProductsBySupplierId = async (req: Request, res: Response) => {
-	const result = await productModel.postProductsBySupplierId(req.body);
+const postProductsBySupplierId = (req: Request, res: Response) => {
+	const result = productModel.postProductsBySupplierId(req.body);
 	
 	return res.json(result);
 }
@@ -22,9 +22,9 @@ const putProductsBySupplierId = (req: Request, res: Response) => {
 }
 
 const deleteProductsBySupplierId = async (req: Request, res: Response) => {
-	const { id } = req.body;
+	const { supplierId } = req.body;
 
-	const result = await productModel.deleteProductsBySupplierId(id);
+	const result = await productModel.deleteProductsBySupplierId(supplierId);
 	
 	return res.json(result);
 }
