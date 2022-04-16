@@ -14,7 +14,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
-app.use(express.static('./front'));
+app.set('views', 'src/views');
+app.use(express.static('src/statics'));
 app.use(cors()); 		//enble pre-flight
 
 app.use('/supplier', supplierRouter);

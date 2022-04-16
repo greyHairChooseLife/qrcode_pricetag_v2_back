@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+	background-color: #143F6B;
+}
+
+#productName {
+	position: absolute;
+	color: white;
+	width: 100vw;
+	font-size: 1.5rem;
+	text-align: center;
+	top: 10%;
+}
+
+#tag {
+	position: absolute;
+	background-color: red;
+	color: #EEE6CE;
+	width: 100vw;
+	height: 11rem;
+	top: 20%;
+}
+#price {
+	position: relative;
+	font-size: 5rem;
+	text-align: center;
+	top: 2.6rem;
+}
+#upCircle {
+	position: absolute;
+	top: -2rem;
+	left: calc(50% - 1.75rem);
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #143F6B;
+	border-radius: 50%;
+}
+#downCircle {
+	position: absolute;
+	bottom: -2rem;
+	left: calc(50% - 1.75rem);
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #143F6B;
+	border-radius: 50%;
+}
+
+#dots {
+	position: relative;
+	left: calc(50% - 0.25rem);
+}
+#dots>div {
+	position: relative;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+}
+#dot1 {
+	bottom: -8rem;
+}
+#dot2 {
+	bottom: -10rem;
+}
+#dot3 {
+	bottom: -12rem;
+}
+
+#whtieBoard {
+	position: absolute;
+	background-color: white;
+	background-color: red;
+	width: 100vw;
+	height: 50vh;
+	z-index: 2;
+}
