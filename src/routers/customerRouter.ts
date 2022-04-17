@@ -3,7 +3,7 @@ import customerController from '../controllers/customerController';
 
 const router = express.Router();
 
-router.get('/get/:mobile', customerController.getCartByMobile);
+router.get('/get/:clientId', customerController.getCartByMobile);
 router.post('/post', customerController.postCart);
 router.put('/put', customerController.putCart);
 router.delete('/delete', customerController.deleteCart);

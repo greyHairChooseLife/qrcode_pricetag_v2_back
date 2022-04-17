@@ -18,21 +18,22 @@ const getCartByMobile = async (mobile: string) => {
 }
 
 interface IpostCart {
-	mobile: string,
+	clientId: string,
 	barcode: string,
 	quantity: number,
-	created_date: Date,
 }
 
 const postCart = async (form: IpostCart) => {
-	const { mobile, barcode, quantity, created_date } = form;
+	const { clientId, barcode, quantity } = form;
 
-	const [updateResult] = await db.query(`UPDATE customer SET quantity=${quantity} WHERE mobile=${mobile} AND barcode=${barcode} AND created_date >= date_add(NOW(), interval -12 hour)`);
+	const [updateResult] = await db.query(`UPDATE customer SET quantity=${quantity} WHERE mobile=${clientId} AND barcode=${barcode} AND created_date >= date_add(NOW(), interval -12 hour)`);
 
 	if(updateResult.changedRows > 0){
 		return updateResult;
 	} 
-	db.query(`INSERT INTO customer (mobile, barcode, quantity, created_date) VALUES(?,?,?,?)`, [mobile, barcode, quantity, created_date]);
+	db.query(`INSERT INTO customer (mobile, barcode, quantity, created_date) VALUES(?, ?, ?, NOW())`, [clientId, barcode, quantity]);
+
+	return;
 }
 
 interface IputCart {

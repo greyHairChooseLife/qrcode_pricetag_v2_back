@@ -7,10 +7,11 @@
 	<body>
 		<div id="myNmae">(주)충북제일종합주방</div>
 		<div id="productName"><%= product.name %></div>
-		<div id="tag">
-			<div id="upCircle"></div>
-			<div id="price"><%= product.price %></div>
-			<div id="downCircle"></div>
+		<div class="tagFamily" id="tag">
+			<div class="tagFamily" id="upCircle"></div>
+			<div class="tagFamily" id="price"><%= product.price %></div>
+			<div class="tagFamily" id="downCircle"></div>
+			<div id="lastUpdate">last: <%= product.registered_date %></div>
 
 			<div id="dots">
 				<div class="dots" id="dot1"></div>
@@ -29,6 +30,17 @@
 			<div id="cartImgBox"></div>
 			<svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path fill="#DD4A48" d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
 		</div>
+		<div class="mobileFamily" id="mobileInputBox">
+			<div class="mobileFamily" id="mobileInputGuide">첫 상품입니다!<br>전화번호를 입력 해 주세요.</div>
+			<div class="mobileFamily"><input id="mobileInput" type="text" name="mobile" placeholder="010-0000-0000"></input></div>
+			<div class="mobileFamily"><input id="mobileInputButton" id="mobileInputApply" type="submit" value="확인"></input></div>
+			<div id="mobileInputCancle"><p>x</p></div>
+		</div>
+		<form id="cartForm">
+			<input type="hidden" name="productBarcode" value=<%= product.barcode %>></input>
+			<input type="hidden" id="productCount" name="productCount"></input>
+			<input type="hidden" id="clientIdInput" name="clientIdInput"></input>
+		</form>
 	</body>
 </html>
 
