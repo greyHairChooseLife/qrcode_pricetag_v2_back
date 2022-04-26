@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/method-override": "^0.0.32",
     "axios": "^0.26.0",
     "cookie": "^0.4.2",
     "cookie-parser": "^1.4.6",
@@ -21,6 +22,7 @@
     "express": "^4.17.3",
     "jsbarcode": "^3.11.5",
     "mariadb": "^2.5.5",
+    "method-override": "^3.0.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {

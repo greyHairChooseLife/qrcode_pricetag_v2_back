@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/customerCart.css">
+	</head>
+
+	<body>
+		<div id="headPortion">
+			<div>안녕하세요,<br><span><%= clientId %></span> 님</div>
+			<div id="cartImg">
+				<div id="cartImgBox"></div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path fill="lightgrey" d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
+			</div>
+			<div id="">수정하려면 목록을 터치하세요.</div>
+		</div>
+		<div id="bodyPortion">
+			<% for(var i=0; i<products.length; i++){ %>
+
+			<div class="productRowCompact">
+				<span class="productNameCompact"><%= products[i].name %></span>
+				<span class="productCountCompact"><%= products[i].quantity %></span>
+			</div>
+			<div class="productRowDetail">
+				<span class="productNameDetail">품명: <%= products[i].name %></span>
+				<span class="productSizeDetail">사이즈: <%= products[i].size %></span>
+				<span class="productCountDetail">수량: <span class="productQuantity"><%= products[i].quantity %></span></span>
+				<span class="productDetailCancel">닫기</span>
+				<div>
+					<button class="actionDelete">삭제</button>
+					<button class="actionMinus">-1</button>
+					<button class="actionMinusPower">-5</button>
+					<button class="actionPlusPower">+5</button>
+					<button class="actionPlus">+1</button>
+					<button class="actionApply">확인</button>
+				</div>
+			</div>
+
+			<% } %>
+		</div>
+		<form id="actionForm" method="post">
+			<input type="hidden" name="mobile" value="<%= clientId %>"></input>
+			<input type="hidden" name="barcode"></input>
+			<input type="hidden" name="quantity"></input>
+		</form>
+		<div id="tailPortion">
+			<div id="cartItemCount">상품 가짓수 : <%= products.length %></div>
+		</div>
+	</body>
+</html>
+
+<script>
+	const products = <%- JSON.stringify(products) %>;
+	const clientId = <%- JSON.stringify(clientId) %>;
+</script>
+<script type="text/javascript" src="/customerCart.js"></script>

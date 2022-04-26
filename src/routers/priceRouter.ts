@@ -3,7 +3,7 @@ import priceController from '../controllers/priceController';
 
 const router = express.Router();
 
-router.get('/get/:barcode', priceController.getProductByBarcode);
+router.get('/:barcode', priceController.getProductByBarcode);
 
 export = router;
 

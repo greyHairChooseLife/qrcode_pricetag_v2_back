@@ -99,7 +99,7 @@ cartImg.addEventListener('click', () => {
 		//	redirect to client personal shopping cart
 		//	if there is no cookie, connected router will make it. Else, it will read cookie.
 		cartForm.method = 'get';
-		cartForm.action = `http://localhost:3002/customerCart/get/${clientId}`;
+		cartForm.action = `http://localhost:3002/customerCart/${clientId}`;
 		cartForm.submit();
 	}
 })
@@ -136,7 +136,7 @@ addToCart.addEventListener('click', () => {
 			productCount.value = numberValue;
 			clientIdInput.value = clientId;
 			cartForm.method = 'post';
-			cartForm.action = `http://localhost:3002/customerCart/post`;
+			cartForm.action = `http://localhost:3002/customerCart`;
 			cartForm.submit();
 		}else{
 			alert('1개 이상 선택하세요.');

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/clerk.css">
+	</head>
+
+	<body>
+		<div id="headPortion">
+			<h2 id="">방문자 목록</h2>
+		</div>
+		<div id="bodyPortion">
+			<div>▼</div>
+			<% for(var i=0; i<customers.length; i++){ %>
+				<div class="customerList">
+					<span><%= customers[i].mobile %></span>
+					<span><%= customers[i].created_date.getHours() %>:<%= customers[i].created_date.getMinutes() %></span>
+				</div>
+			<% } %>
+			<div>▲</div>
+		</div>
+		<div id="tailPortion">
+			<div id="">총몇명 : <%= customers.length %></div>
+		</div>
+	</body>
+</html>
+
+<script>
+	const customers = <%- JSON.stringify(customers) %>;
+</script>
+<script type="text/javascript" src="/clerk.js"></script>

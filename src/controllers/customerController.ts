@@ -1,4 +1,4 @@
-import { Request, Response} from 'express'
+import { Request, Response } from 'express'
 import customerModel from '../models/customerModel';
 
 const getCartByMobile = async (req: Request, res: Response) => {
@@ -18,23 +18,23 @@ const getCartByMobile = async (req: Request, res: Response) => {
 		}
 		else {
 			res.cookie('JEIL', req.params.clientId, {
-				maxAge: 1000*60*60*12,
+				maxAge: 1000*60*60*10,
 			});
 		}
 	}else{
 		res.cookie('JEIL', req.params.clientId, {
-			maxAge: 1000*60*60*12,
+				maxAge: 1000*60*60*10,
 		});
 	}
 
-	const result = await customerModel.getCartByMobile(req.params.clientId);
+	let result = await customerModel.getCartByMobile(req.params.clientId);
 	
-	return res.json(result);
+	return res.render('customerCart', {clientId: req.params.clientId, products: result});
 }
 
 const postCart= async (req: Request, res: Response) => {
 
-	const { clientIdInput, productBarcode, productCount } = req.body;
+	const { mobile, productBarcode, productCount } = req.body;
 
 	// generate cookie if it's needed
 	const cookies = req.headers.cookie;
@@ -46,35 +46,35 @@ const postCart= async (req: Request, res: Response) => {
 			if(ele[0] === 'JEIL') return true;
 		});
 		if(found === undefined){
-			res.cookie('JEIL', clientIdInput, {
-				maxAge: 1000*60*60*12,
+			res.cookie('JEIL', mobile, {
+				maxAge: 1000*60*60*10,
 			});
 		}
 	}else{
-		res.cookie('JEIL', clientIdInput, {
-			maxAge: 1000*60*60*12,
+		res.cookie('JEIL', mobile, {
+			maxAge: 1000*60*60*10,
 		});
 	}
 
 	await customerModel.postCart({
-		clientId: clientIdInput,
+		clientId: mobile,
 		barcode: productBarcode,
 		quantity: productCount,
 	});
 	
-	return res.redirect(`http://localhost:3002/customerCart/get/${clientIdInput}`);
+	return res.redirect(`http://localhost:3002/customerCart/${mobile}`);
 }
 
 const putCart = async (req: Request, res: Response) => {
 	const result = await customerModel.putCart(req.body);
 	
-	return res.json(result);
+	return res.redirect(`http://localhost:3002/customerCart/${req.body.mobile}`);
 }
 
-const deleteCart = async (req: Request, res: Response) => {
-	const result = await customerModel.deleteCart(req.body);
+const deleteCart = (req: Request, res: Response) => {
+	customerModel.deleteCart(req.body);
 	
-	return res.json(result);
+	return res.redirect(`http://localhost:3002/customerCart/${req.body.mobile}`);
 }
 
 export = {

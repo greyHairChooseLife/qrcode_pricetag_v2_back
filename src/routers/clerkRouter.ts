@@ -3,8 +3,8 @@ import clerkController from '../controllers/clerkController';
 
 const router = express.Router();
 
-router.get('/get', clerkController.getCustomers);
-router.get('/get/:mobile', clerkController.getCustomerByMobile);
+router.get('', clerkController.getCustomers);
+router.get('/:mobile', clerkController.getCustomerByMobile);
 
 export = router;
 

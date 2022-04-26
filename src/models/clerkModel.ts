@@ -4,7 +4,7 @@ const db = require('../config/db').promise();
 
 const getCustomers = async () => {
 
-	const [result] = await db.query(`SELECT DISTINCT mobile FROM customer WHERE created_date >= date_add(NOW(), interval -12 hour)`);
+	const [result] = await db.query(`SELECT DISTINCT mobile, created_date FROM customer WHERE created_date >= date_add(NOW(), interval -12 hour)`);
 
 	if(result == undefined){
 		return null;

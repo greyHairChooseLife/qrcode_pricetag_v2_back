@@ -1,0 +1,156 @@
+body {
+	margin: 0;
+	font-size: 1.2rem;
+}
+
+#headPortion {
+	height: 20vh;
+}
+#headPortion>div:nth-child(1) {
+	position: absolute;
+	left: 2rem;
+	top: 1.5rem;
+	line-height: 160%;
+	
+}
+#headPortion>div:nth-child(1)>span {
+	font-size: 2rem;
+}
+#cartImg {
+	position: fixed;
+	right: 10vw;
+	top: 4vh;
+	z-index: 2;
+}
+#cartImgBox {
+	position: fixed;
+	right: 7vw;
+	top: 2.2vh;
+	height: 4rem;
+	width: 4.1rem;
+	border-radius: 50%;
+	border: solid 3px lightgrey;
+}
+#headPortion>div:nth-child(3) {
+	position: absolute;
+	width: 100vw;
+	top: 15vh;
+	background-color: #143F6B;
+	text-align: center;
+	padding: 1rem 0 1rem 0;
+	color: white;
+	font-size: 1.1rem;
+}
+
+#bodyPortion {
+	position: absolute;
+	top: 28vh;
+}
+.productRowCompact {
+	position: relative;
+	width: 90vw;
+	left: 5vw;
+	margin-bottom: 3vw;
+	color: #143F6B;
+}
+.productRowCompact>span:nth-child(1) {
+	display: inline-block;
+	height: 4vh;
+	width: 65vw;
+	background-color: #B9CCED;
+	padding: 2vw;
+	padding-left: 4vw;
+	border-radius: 10px;
+}
+.productRowCompact>span:nth-child(2) {
+	display: inline-block;
+	text-align: center;
+	height: 4vh;
+	margin-left: 2vw;
+	width: 15vw;
+	background-color: #B9CCED;
+	border-radius: 10px;
+	padding-top: 3vw;
+	padding-bottom: 1vw;
+}
+
+.productRowDetail {
+	display: none;
+	position: relative;
+	background-color: #B9CCED;
+	height: 13.5vh;
+	width: 87vw;
+	left: 5vw;
+	margin-bottom: 30vw;
+	border-radius: 10px;
+	color: #143F6B;
+	padding-top: 3vw;
+	padding-left: 3vw;
+	line-height: 150%;
+}
+.productRowDetail>span:nth-child(1) {
+	display: block;
+}
+.productRowDetail>span:nth-child(2) {
+	display: block;
+}
+.productRowDetail>span:nth-child(3) {
+	display: block;
+}
+.productRowDetail>span:nth-child(4) {
+	position: absolute;
+	color:grey;
+	font-size: 1rem;
+	top: 1vh;
+	right: 3vw;
+}
+.productRowDetail>div {
+	margin-top: 2.5vh;
+	margin-left: -3vw;
+}
+.productRowDetail>div>button {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;border: solid 1px grey;
+}
+.actionDelete {
+	color: red;
+	width: 20vw;
+	height: 4vh;
+}
+.actionMinus {
+	width: 13vw;
+	height: 4vh;
+	margin-left: 3vw;
+}
+.actionMinusPower {
+	width: 13vw;
+	height: 4vh;
+	margin-left: 3vw;
+}
+.actionPlusPower {
+	width: 13vw;
+	height: 4vh;
+	margin-left: 3vw;
+}
+.actionPlus {
+	width: 13vw;
+	height: 4vh;
+	margin-left: 3vw;
+}
+.actionApply {
+	width: 31vw;
+	height: 5vh;
+	margin-top: 1.5vh;
+	margin-left: 58vw;
+	font-size: 1rem;
+	color: #143F6B;
+}
+
+
+#tailPortion {
+	position: absolute;
+	top: 94vh;
+	width: 100vw;
+	text-align: center;
+}
