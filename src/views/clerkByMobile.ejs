@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/clerkByMobile.css">
+	</head>
+
+	<body>
+		<div id="headPortion">
+			<div id="barcodeBox">
+				<div id="barcodeHello">바코드</div>
+				<svg id="barcode">
+				</svg>
+			</div>
+		</div>
+		<div id="bodyPortion">
+			<div id="bodyHead">총 <%= data.length %>가지</div>
+			<% for(var i=0; i<data.length; i++){ %>
+				<div class="productListCase">
+					<span class="checker">Ⅴ</span>
+					<span class="productList">
+						<span><%= data[i].name %></span>
+						<span class="productQuantity"><%= data[i].quantity %>개</span>
+					</span>
+				</div>
+			<% } %>
+			<div id="bodyTail"></div>
+		</div>
+		<div id="tailPortion">
+			<div id=""><%= mobile %> 님</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	const data = <%- JSON.stringify(data) %>;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.4/dist/JsBarcode.all.min.js"></script>
+<script type="text/javascript" src="/clerkByMobile.js"></script>

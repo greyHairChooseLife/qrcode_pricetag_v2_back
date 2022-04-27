@@ -8,9 +8,9 @@ const getCustomers = async (req: Request, res: Response) => {
 }
 
 const getCustomerByMobile= async (req: Request, res: Response) => {
-	const result = await clerkModel.getCustomerByMobile(req.params.mobile);
+	let result = await clerkModel.getCustomerByMobile(req.params.mobile);
 	
-	return res.json(result);
+	return res.render('clerkByMobile', {data: result, mobile: req.params.mobile});
 }
 
 export = {

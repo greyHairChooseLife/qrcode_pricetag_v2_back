@@ -20,7 +20,9 @@ const getCustomerByMobile = async (mobile: string) => {
 	for(var i=0; i<result.length; i++){
 		result[i].margin_ratio = await db.query(`SELECT supplier.margin_ratio FROM supplier JOIN customer ON supplier.id=${result[i].supplier_id}`);
 		result[i].margin_ratio = result[i].margin_ratio[0][0].margin_ratio;
+		result[i].price = Math.round(result[i].purchased_cost * (1+Number(result[i].margin_ratio))/100) * 100;
 	}
+	//result[0] = {...result[0], price: Math.round(result[0].purchased_cost * (1+Number(result[0].margin_ratio))/100) * 100}
 	if(result == undefined){
 		return null;
 	}else{
