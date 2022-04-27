@@ -21,8 +21,6 @@ for(var i=0; i<data.length; i++){
 					width: 5,
 					height: 100,
 					fontSize: 20,
-					margin: 15,
-					marginBottom: 2,
 				});
 
 			})
