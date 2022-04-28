@@ -7,10 +7,35 @@ const getCustomers = async (req: Request, res: Response) => {
 	return res.render('clerk', {customers: result});
 }
 
+interface ICartItem {
+	id: number,
+	product_code: string,
+	name: string,
+	size: string,
+	registered_date: Date,
+	purchased_cost: number,
+	supplier_id: number,
+	barcode: string,
+	quantity: number,
+	margin_ratio: string,
+	price: number,
+}
+
 const getCustomerByMobile= async (req: Request, res: Response) => {
-	let result = await clerkModel.getCustomerByMobile(req.params.mobile);
-	
-	return res.render('clerkByMobile', {data: result, mobile: req.params.mobile});
+	let result: ICartItem[] = await clerkModel.getCustomerByMobile(req.params.mobile);
+
+	const total: number = result.reduce((prev: number, cur: ICartItem) => {return prev + cur.price * cur.quantity}, 0)
+
+	const readableTotal: string = String(total).split("").reverse().reduce((prev: string[], cur, idx) => {
+		if(idx !== 0 && idx % 3 === 0)
+			prev.push(',');
+		prev.push(cur);
+		return prev;
+	}, []).reverse().reduce((prev: string, cur) => {
+		return prev + cur;
+	}, '');
+
+	return res.render('clerkByMobile', {data: result, mobile: req.params.mobile, totalAmount: readableTotal});
 }
 
 export = {

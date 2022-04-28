@@ -1,7 +1,3 @@
-console.log(data);
-const sum = data.reduce((prev, cur) => {return prev + cur.price * cur.quantity}, 0);
-document.getElementById("bodyTail").innerText = "총 " + sum + ' 원';
-
 const productList = document.getElementsByClassName('productList');
 const checker = document.getElementsByClassName('checker');
 

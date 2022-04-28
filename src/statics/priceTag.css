@@ -36,6 +36,10 @@ body {
 	font-size: 5rem;
 	text-align: center;
 	top: 2.6rem;
+	margin-left: 1rem;
+}
+#price>span {
+	font-size: 1.8rem;
 }
 #upCircle {
 	position: absolute;

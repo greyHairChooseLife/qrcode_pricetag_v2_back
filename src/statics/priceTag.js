@@ -18,8 +18,7 @@ window.addEventListener('load', () => {
 		document.getElementById('productName').style.fontWeight = 'bold';
 		document.getElementById('productName').style.top = '15%';
 		document.getElementById('upperPortion').style.display = 'block';
-	//}, 3200);
-	}, 100);
+	}, 3200);
 });
 
 //********************************************************************
