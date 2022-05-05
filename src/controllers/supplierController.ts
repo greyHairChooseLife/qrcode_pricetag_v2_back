@@ -7,6 +7,12 @@ const getSuppliers = async (req: Request, res: Response) => {
 	return res.json(result);
 }
 
+const getSupplierById = async (req: Request, res: Response) => {
+	const result = await supplierModel.getSupplierById(req.params.supplier_id);
+	
+	return res.json(result);
+}
+
 const postSupplier = async (req: Request, res: Response) => {
 	const result = await supplierModel.postSupplier(req.body);
 	
@@ -27,6 +33,7 @@ const deleteSupplier = async (req: Request, res: Response) => {
 
 export = {
 	getSuppliers: getSuppliers,
+	getSupplierById: getSupplierById,
 	postSupplier: postSupplier,
 	putSupplier: putSupplier,
 	deleteSupplier: deleteSupplier,

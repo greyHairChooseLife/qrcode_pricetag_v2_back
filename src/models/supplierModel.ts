@@ -12,6 +12,16 @@ const getSuppliers = async () => {
 	}
 }
 
+const getSupplierById = async ( supplier_id: string ) => {
+	const [result] = await db.query(`SELECT * FROM supplier WHERE id=${supplier_id}`);
+
+	if(result == undefined){
+		return null;
+	}else{
+		return result[0];
+	}
+}
+
 interface postSupplier {
 	name: string,
 	address: string,
@@ -59,6 +69,7 @@ const deleteSupplier = async (form: deleteSupplier) => {
 
 export = {
 	getSuppliers: getSuppliers,
+	getSupplierById: getSupplierById,
 	postSupplier: postSupplier,
 	putSupplier: putSupplier,
 	deleteSupplier: deleteSupplier,
