@@ -13,7 +13,8 @@ import clerkRouter from './routers/clerkRouter';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({limit: '1mb'}));
+
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 app.use(express.static('src/statics'));
