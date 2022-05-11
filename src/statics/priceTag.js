@@ -1,3 +1,4 @@
+const { API_SERVER_HOST, PORT } = process.env;
 const dots = document.getElementsByClassName('dots');
 
 //********************************************************************
@@ -98,7 +99,7 @@ cartImg.addEventListener('click', () => {
 		//	redirect to client personal shopping cart
 		//	if there is no cookie, connected router will make it. Else, it will read cookie.
 		cartForm.method = 'get';
-		cartForm.action = `http://localhost:3002/customerCart/${clientId}`;
+		cartForm.action = `http://${API_SERVER_HOST}:${PORT}/customerCart/${clientId}`;
 		cartForm.submit();
 	}
 })
@@ -135,7 +136,7 @@ addToCart.addEventListener('click', () => {
 			productCount.value = numberValue;
 			clientIdInput.value = clientId;
 			cartForm.method = 'post';
-			cartForm.action = `http://localhost:3002/customerCart`;
+			cartForm.action = `http://${API_SERVER_HOST}:${PORT}/customerCart`;
 			cartForm.submit();
 		}else{
 			alert('1개 이상 선택하세요.');

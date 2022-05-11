@@ -1,3 +1,4 @@
+const { API_SERVER_HOST, PORT } = process.env;
 import { Request, Response } from 'express'
 import customerModel from '../models/customerModel';
 
@@ -62,19 +63,19 @@ const postCart= async (req: Request, res: Response) => {
 		quantity: productCount,
 	});
 	
-	return res.redirect(`http://localhost:3002/customerCart/${mobile}`);
+	return res.redirect(`http://${API_SERVER_HOST}:${PORT}/customerCart/${mobile}`);
 }
 
 const putCart = async (req: Request, res: Response) => {
 	const result = await customerModel.putCart(req.body);
 	
-	return res.redirect(`http://localhost:3002/customerCart/${req.body.mobile}`);
+	return res.redirect(`http://${API_SERVER_HOST}:${PORT}/customerCart/${req.body.mobile}`);
 }
 
 const deleteCart = (req: Request, res: Response) => {
 	customerModel.deleteCart(req.body);
 	
-	return res.redirect(`http://localhost:3002/customerCart/${req.body.mobile}`);
+	return res.redirect(`http://${API_SERVER_HOST}:${PORT}/customerCart/${req.body.mobile}`);
 }
 
 export = {

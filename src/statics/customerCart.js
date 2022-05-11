@@ -1,3 +1,5 @@
+const { API_SERVER_HOST, PORT } = process.env;
+
 	//********************************************************************
 	//		 exposure selection : Compact vs Detail
 	//********************************************************************
@@ -33,6 +35,7 @@ for(var i=0; i<productRowDetail.length; i++){
 	//		 function for each buttons in Detail
 	//********************************************************************
 
+
 const actionDelete = document.getElementsByClassName('actionDelete');
 const actionMinus = document.getElementsByClassName('actionMinus');
 const actionMinusPower = document.getElementsByClassName('actionMinusPower');
@@ -53,7 +56,7 @@ for(var i=0; i<products.length; i++){
 				if(window.confirm('정말로 삭제하시겠습니까?')){
 					actionForm.barcode.value = products[idx].barcode;
 					actionForm.quantity.value = products[idx].quantity;
-					actionForm.action = `http://localhost:3002/customerCart?_method=DELETE`;
+					actionForm.action = `http://${API_SERVER_HOST}:${PORT}/customerCart?_method=DELETE`;
 					actionForm.submit();
 				}
 			})
@@ -84,7 +87,7 @@ for(var i=0; i<products.length; i++){
 			actionApply[idx].addEventListener('click', () => {
 				actionForm.barcode.value = products[idx].barcode;
 				actionForm.quantity.value = products[idx].quantity;
-				actionForm.action = `http://localhost:3002/customerCart?_method=PUT`;
+				actionForm.action = `http://${API_SERVER_HOST}:${PORT}/customerCart?_method=PUT`;
 				actionForm.submit();
 			})
 		}

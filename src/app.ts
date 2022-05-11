@@ -11,7 +11,6 @@ import customerRouter from './routers/customerRouter';
 import clerkRouter from './routers/clerkRouter';
 
 const app = express();
-console.log('sex');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({limit: '1mb'}));
