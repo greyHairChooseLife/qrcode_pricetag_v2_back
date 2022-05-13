@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 const priceModel_1 = __importDefault(require("../models/priceModel"));
+const { API_SERVER_HOST, PORT } = process.env;
 const getProductByBarcode = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { barcode } = req.params;
     const result = yield priceModel_1.default.getProductByBarcode(barcode);
@@ -24,7 +25,10 @@ const getProductByBarcode = (req, res) => __awaiter(void 0, void 0, void 0, func
     }, []).reverse().reduce((prev, cur) => {
         return prev + cur;
     }, '');
-    result[0] = Object.assign(Object.assign({}, result[0]), { registered_date: cleanDate, price: readablePrice });
+    result[0] = Object.assign(Object.assign({}, result[0]), { registered_date: cleanDate, price: readablePrice, env: {
+            API_SERVER_HOST: API_SERVER_HOST,
+            PORT: PORT
+        } });
     return res.render('priceTag', { product: result[0] });
 });
 module.exports = {
