@@ -1,5 +1,6 @@
 import { Request, Response} from 'express'
 import priceModel from '../models/priceModel'
+
 const { API_SERVER_HOST, PORT } = process.env;
 
 const getProductByBarcode = async (req: Request, res: Response) => {
@@ -20,13 +21,14 @@ const getProductByBarcode = async (req: Request, res: Response) => {
 		...result[0], 
 		registered_date: cleanDate, 
 		price: readablePrice,
-		env: {
-			API_SERVER_HOST: API_SERVER_HOST,
-			PORT: PORT
-		}
 	};
 
-	return res.render('priceTag', {product: result[0]});
+	const env = {
+		API_SERVER_HOST: API_SERVER_HOST,
+		PORT: PORT
+	}
+
+	return res.render('priceTag', { product: result[0], env: env });
 }
 
 export = {

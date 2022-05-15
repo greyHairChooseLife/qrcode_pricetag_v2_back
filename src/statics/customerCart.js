@@ -1,4 +1,4 @@
-const { API_SERVER_HOST, PORT } = process.env;
+const { API_SERVER_HOST, PORT } = env;
 
 	//********************************************************************
 	//		 exposure selection : Compact vs Detail

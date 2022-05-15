@@ -12,9 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 const clerkModel_1 = __importDefault(require("../models/clerkModel"));
+const { API_SERVER_HOST, PORT } = process.env;
 const getCustomers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield clerkModel_1.default.getCustomers();
-    return res.render('clerk', { customers: result });
+    const env = {
+        API_SERVER_HOST: API_SERVER_HOST,
+        PORT: PORT
+    };
+    return res.render('clerk', { customers: result, env: env });
 });
 const getCustomerByMobile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let result = yield clerkModel_1.default.getCustomerByMobile(req.params.mobile);

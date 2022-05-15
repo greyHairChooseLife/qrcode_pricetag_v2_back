@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const { API_SERVER_HOST, PORT } = process.env;
 const customerModel_1 = __importDefault(require("../models/customerModel"));
+const { API_SERVER_HOST, PORT } = process.env;
 const getCartByMobile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // generate cookie if it's needed
     const cookies = req.headers.cookie;
@@ -40,7 +40,11 @@ const getCartByMobile = (req, res) => __awaiter(void 0, void 0, void 0, function
         });
     }
     let result = yield customerModel_1.default.getCartByMobile(req.params.clientId);
-    return res.render('customerCart', { clientId: req.params.clientId, products: result });
+    const env = {
+        API_SERVER_HOST: API_SERVER_HOST,
+        PORT: PORT
+    };
+    return res.render('customerCart', { clientId: req.params.clientId, products: result, env: env });
 });
 const postCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { mobile, productBarcode, productCount } = req.body;

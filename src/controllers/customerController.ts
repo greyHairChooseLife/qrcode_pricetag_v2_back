@@ -1,6 +1,6 @@
-const { API_SERVER_HOST, PORT } = process.env;
 import { Request, Response } from 'express'
 import customerModel from '../models/customerModel';
+const { API_SERVER_HOST, PORT } = process.env;
 
 const getCartByMobile = async (req: Request, res: Response) => {
 
@@ -29,8 +29,13 @@ const getCartByMobile = async (req: Request, res: Response) => {
 	}
 
 	let result = await customerModel.getCartByMobile(req.params.clientId);
+
+	const env = {
+		API_SERVER_HOST: API_SERVER_HOST,
+		PORT: PORT
+	}
 	
-	return res.render('customerCart', {clientId: req.params.clientId, products: result});
+	return res.render('customerCart', {clientId: req.params.clientId, products: result, env: env});
 }
 
 const postCart= async (req: Request, res: Response) => {

@@ -1,4 +1,4 @@
-const { API_SERVER_HOST, PORT } = process.env;
+const { API_SERVER_HOST, PORT } = env;
 const customerList = document.getElementsByClassName('customerList');
 
 for(var i=0; i<customers.length; i++){

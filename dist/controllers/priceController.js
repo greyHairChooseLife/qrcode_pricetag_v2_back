@@ -25,11 +25,12 @@ const getProductByBarcode = (req, res) => __awaiter(void 0, void 0, void 0, func
     }, []).reverse().reduce((prev, cur) => {
         return prev + cur;
     }, '');
-    result[0] = Object.assign(Object.assign({}, result[0]), { registered_date: cleanDate, price: readablePrice, env: {
-            API_SERVER_HOST: API_SERVER_HOST,
-            PORT: PORT
-        } });
-    return res.render('priceTag', { product: result[0] });
+    result[0] = Object.assign(Object.assign({}, result[0]), { registered_date: cleanDate, price: readablePrice });
+    const env = {
+        API_SERVER_HOST: API_SERVER_HOST,
+        PORT: PORT
+    };
+    return res.render('priceTag', { product: result[0], env: env });
 });
 module.exports = {
     getProductByBarcode: getProductByBarcode,

@@ -1,10 +1,17 @@
 import { Request, Response} from 'express'
 import clerkModel from '../models/clerkModel';
 
+const { API_SERVER_HOST, PORT } = process.env;
+
 const getCustomers = async (req: Request, res: Response) => {
 	const result = await clerkModel.getCustomers();
+
+	const env = {
+		API_SERVER_HOST: API_SERVER_HOST,
+		PORT: PORT
+	}
 	
-	return res.render('clerk', {customers: result});
+	return res.render('clerk', {customers: result, env: env});
 }
 
 interface ICartItem {
